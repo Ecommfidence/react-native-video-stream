@@ -212,10 +212,29 @@
          _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration];
          */
         
+        /** Weird resolution that works for AWS */
+        
+         LFLiveAudioConfiguration *audioConfiguration = [LFLiveAudioConfiguration new];
+         audioConfiguration.numberOfChannels = 2;
+         audioConfiguration.audioBitrate = LFLiveAudioBitRate_128Kbps;
+         audioConfiguration.audioSampleRate = LFLiveAudioSampleRate_44100Hz;
+         
+         LFLiveVideoConfiguration *videoConfiguration = [LFLiveVideoConfiguration new];
+         videoConfiguration.videoSize = CGSizeMake(576, 1024);
+         videoConfiguration.videoBitRate = 800*1024;
+         videoConfiguration.videoMaxBitRate = 1000*1024;
+         videoConfiguration.videoMinBitRate = 500*1024;
+         videoConfiguration.videoFrameRate = 30;
+         videoConfiguration.videoMaxKeyframeInterval = 30;
+         videoConfiguration.landscape = NO;
+         videoConfiguration.sessionPreset = LFCaptureSessionPreset360x640;
+         
+         _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration];
+        
         
         /**    自己定制高质量音频128K 分辨率设置为720*1280 方向竖屏 */
         
-        
+        /*
          LFLiveAudioConfiguration *audioConfiguration = [LFLiveAudioConfiguration new];
          audioConfiguration.numberOfChannels = 2;
          audioConfiguration.audioBitrate = LFLiveAudioBitRate_128Kbps;
@@ -232,7 +251,7 @@
          videoConfiguration.sessionPreset = LFCaptureSessionPreset360x640;
          
          _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration];
-         
+         */
         
         
         /**    自己定制高质量音频128K 分辨率设置为720*1280 方向横屏  */
